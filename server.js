@@ -11,8 +11,8 @@ import rateLimit from "express-rate-limit"
 
 
 const limiter = rateLimit({
-  windowMs: 5 * 60 * 1000, 
-  max: 50, 
+  windowMs: 3 * 60 * 1000, 
+  max: 300, 
   message: "Too many requests from this IP, please try again later.",
   standardHeaders: true, 
   legacyHeaders: false,
@@ -39,8 +39,8 @@ app.set("layout","./layouts/main")
 app.set("view engine","ejs")
 
 app.get("/",(req,res)=> res.redirect("/api/v1/auth/signup"))
-app.use("/api/v1/posts",postRouter)
-app.use("/api/v1/auth",authRouter)
+app.use("/api/v1/posts",limiter,postRouter)
+app.use("/api/v1/auth",limiter,authRouter)
 
 app.listen(port ,()=>{
     console.log(`server is listening on port ${port}`);

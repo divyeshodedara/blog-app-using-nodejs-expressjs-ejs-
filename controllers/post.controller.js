@@ -65,10 +65,20 @@ const getEditPost = async (req, res) => {
 
 const editPost = async (req, res) => {
   try {
-    await Post.findByIdAndUpdate(req.params.id, {
-      title: req.body.title,
-      body: req.body.body,
-    });
+    
+    const userId=req.userId
+    const postId=req.params.id
+
+    const post=await Post.findOne({_id: postId})
+
+    if(post.user==userId){
+      await Post.findByIdAndUpdate(req.params.id, {
+        title: req.body.title,
+        body: req.body.body,
+      });
+    }else{
+      return res.status(401).json({ error : "you are not authorized to edit post of other peoples, so mind your own business"})
+    }
 
     res.redirect("/api/v1/posts/dashboard");
   } catch (error) {
