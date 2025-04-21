@@ -1,0 +1,46 @@
+<a href="/api/v1/posts/dashboard" class="back-link">&larr; Back to Dashboard</a>
+
+<div class="form-container">
+  <div class="form-title">
+    <h2>Edit Post</h2>
+
+    <form
+      action="/api/v1/posts/delete-post/<%= data._id %>?_method=DELETE"
+      method="post"
+      style="margin-top: 1rem"
+    >
+      <input
+        type="submit"
+        value="Delete Post"
+        style="background-color: #f44336"
+      />
+    </form>
+  </div>
+
+  <form
+    action="/api/v1/posts/edit-post/<%= data._id %>?_method=PUT"
+    method="post"
+  >
+    <label for="title">Post Title</label>
+    <input
+      type="text"
+      id="title"
+      placeholder="Enter your post title"
+      name="title"
+      value="<%= data.title %>"
+      required
+    />
+
+    <label for="body">Post Content</label>
+    <textarea
+      name="body"
+      id="body"
+      placeholder="Write your post content here..."
+      required
+    >
+<%= data.body %></textarea
+    >
+
+    <input type="submit" value="Update Post" />
+  </form>
+</div>

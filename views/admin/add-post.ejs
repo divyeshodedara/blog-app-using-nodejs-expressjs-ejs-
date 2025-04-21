@@ -1,0 +1,27 @@
+<a href="/api/v1/posts/dashboard" class="back-link">&larr; Back to Dashboard</a>
+
+<div class="form-container">
+  <div class="form-title">
+    <h2>Add New Post</h2>
+  </div>
+
+  <form action="/api/v1/posts/add-post" method="post">
+    <label for="title">Post Title</label>
+    <input
+      type="text"
+      id="title"
+      placeholder="Enter your post title"
+      name="title"
+      required
+    />
+
+    <label for="body">Post Content</label>
+    <textarea
+      name="body"
+      id="body"
+      placeholder="Write your post content here..."
+      required
+    ></textarea>
+    <input type="submit" value="Publish Post" />
+  </form>
+</div>
