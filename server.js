@@ -7,6 +7,18 @@ import cookieParser from "cookie-parser"
 import methodOverride from "method-override"
 import authRouter from "./routes/auth.routes.js"
 import postRouter from "./routes/post.routes.js"
+import rateLimit from "express-rate-limit"
+
+
+const limiter = rateLimit({
+  windowMs: 5 * 60 * 1000, 
+  max: 50, 
+  message: "Too many requests from this IP, please try again later.",
+  standardHeaders: true, 
+  legacyHeaders: false,
+});
+
+
 
 const app=express()
 
@@ -18,6 +30,7 @@ app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
 app.use(cookieParser())
 app.use(methodOverride("_method"))
+app.use(limiter);
 
 
 app.use(express.static("public"))

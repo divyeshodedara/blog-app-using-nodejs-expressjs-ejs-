@@ -78,8 +78,17 @@ const editPost = async (req, res) => {
 
 const deletePost = async (req, res) => {
   try {
-    await Post.deleteOne({ _id: req.params.id });
 
+    const userId=req.userId
+    const postId=req.params.id
+
+    const post=await Post.findOne({_id: postId})
+
+    if(post.user==userId){
+      await Post.deleteOne({ _id: req.params.id });
+    }else{
+      return res.status(401).json({ error : "you are not authorized to delete post of other peoples, so mind your own business"})
+    }
     res.redirect("/api/v1/posts/dashboard");
   } catch (error) {
     console.log(error);

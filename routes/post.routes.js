@@ -27,7 +27,7 @@ postRouter.get("/dashboard",authMiddleware, getDashBoard);
 postRouter.post("/search",searchPost);
 
 //get add post page
-postRouter.get("/add-post", getAddPost);
+postRouter.get("/add-post",authMiddleware ,getAddPost);
 
 //add post
 postRouter.post("/add-post", authMiddleware, addPost);
