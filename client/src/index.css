@@ -1,0 +1,387 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+.container {
+  max-width: 1100px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+/* Dark minimal theme base */
+body {
+  background: #03050a; /* darker near-black */
+  color: #f1f8ff; /* very light text */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI",
+    Roboto, "Helvetica Neue", Arial;
+  font-size: 16px; /* base size */
+  line-height: 1.6;
+}
+
+.card {
+  background-color: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.03);
+  border-radius: 1rem; /* rounded-xl */
+  padding: 1.5rem;
+  box-shadow: 0 6px 18px rgba(2, 6, 23, 0.45);
+  transition: transform 160ms ease, box-shadow 160ms ease,
+    background-color 160ms ease;
+}
+
+.card:hover {
+  transform: translateY(-4px); /* similar to -translate-y-1 */
+  box-shadow: 0 20px 40px rgba(2, 6, 23, 0.6); /* stronger shadow on hover */
+}
+
+/* Card gradient variants for subtle visual distinction */
+.card-grad-a {
+  background-image: radial-gradient(
+      60rem 30rem at 0% -10%,
+      rgba(14, 165, 233, 0.18),
+      transparent 35%
+    ),
+    radial-gradient(
+      40rem 20rem at 110% -10%,
+      rgba(99, 102, 241, 0.12),
+      transparent 30%
+    ),
+    radial-gradient(
+      50rem 25rem at -10% 110%,
+      rgba(14, 165, 233, 0.08),
+      transparent 30%
+    );
+}
+.card-grad-b {
+  background-image: radial-gradient(
+      50rem 22rem at 0% -10%,
+      rgba(34, 211, 238, 0.14),
+      transparent 35%
+    ),
+    radial-gradient(
+      40rem 20rem at 110% -10%,
+      rgba(168, 85, 247, 0.1),
+      transparent 30%
+    ),
+    radial-gradient(
+      50rem 25rem at -10% 110%,
+      rgba(59, 130, 246, 0.06),
+      transparent 30%
+    );
+}
+.card-grad-c {
+  background-image: radial-gradient(
+      60rem 26rem at 0% -10%,
+      rgba(59, 130, 246, 0.14),
+      transparent 35%
+    ),
+    radial-gradient(
+      40rem 20rem at 110% -10%,
+      rgba(14, 165, 233, 0.1),
+      transparent 30%
+    ),
+    radial-gradient(
+      50rem 25rem at -10% 110%,
+      rgba(17, 94, 89, 0.06),
+      transparent 30%
+    );
+}
+
+/* Gradient title text */
+.text-gradient {
+  background-image: linear-gradient(90deg, #93c5fd, #60a5fa, #3b82f6);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+a {
+  color: #cfe8ff;
+}
+
+/* buttons */
+.btn-brand {
+  background: linear-gradient(90deg, #0ea5e9, #2563eb);
+  color: white;
+  padding: 0.6rem 1rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 6px 18px rgba(37, 99, 235, 0.18);
+  transition: transform 150ms ease, box-shadow 150ms ease, opacity 150ms ease;
+}
+.btn-brand:hover {
+  transform: translateY(-2px);
+  opacity: 0.98;
+}
+
+.btn-outline {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  color: #cfe8ff;
+  padding: 0.5rem 0.9rem;
+  border-radius: 0.5rem;
+  position: relative;
+  transition: background 160ms ease, border-color 160ms ease, color 160ms ease,
+    transform 140ms ease;
+}
+.btn-outline:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.12);
+  color: #fff;
+  transform: translateY(-2px);
+}
+.btn-outline:active {
+  transform: translateY(0);
+}
+
+/* Edit button (accented outline) */
+.btn-edit {
+  background: rgba(14, 165, 233, 0.08);
+  border: 1px solid rgba(14, 165, 233, 0.35);
+  color: #7dd3fc;
+  padding: 0.5rem 0.9rem;
+  border-radius: 0.5rem;
+  font-weight: 500;
+  transition: background 160ms ease, border-color 160ms ease, color 160ms ease,
+    transform 140ms ease;
+}
+.btn-edit:hover {
+  background: rgba(14, 165, 233, 0.18);
+  border-color: rgba(14, 165, 233, 0.55);
+  color: #e0f8ff;
+  transform: translateY(-2px);
+}
+.btn-edit:active {
+  transform: translateY(0);
+}
+
+/* Delete button (danger) */
+.btn-delete {
+  background: rgba(239, 68, 68, 0.08);
+  border: 1px solid rgba(239, 68, 68, 0.4);
+  color: #fca5a5;
+  padding: 0.5rem 0.9rem;
+  border-radius: 0.5rem;
+  font-weight: 500;
+  transition: background 160ms ease, border-color 160ms ease, color 160ms ease,
+    transform 140ms ease;
+}
+.btn-delete:hover {
+  background: rgba(239, 68, 68, 0.18);
+  border-color: rgba(239, 68, 68, 0.55);
+  color: #fecaca;
+  transform: translateY(-2px);
+}
+.btn-delete:active {
+  transform: translateY(0);
+}
+
+/* Shared focus style */
+.btn-outline:focus,
+.btn-edit:focus,
+.btn-delete:focus,
+.btn-brand:focus {
+  outline: 2px solid rgba(14, 165, 233, 0.6);
+  outline-offset: 2px;
+}
+
+/* inputs */
+.input-field {
+  background: rgba(7, 26, 51, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  padding: 0.6rem 0.9rem;
+  border-radius: 0.6rem;
+  transition: box-shadow 120ms ease, transform 120ms ease;
+}
+.input-field:focus {
+  box-shadow: 0 6px 18px rgba(14, 165, 233, 0.12);
+  transform: translateY(-1px);
+}
+
+/* editor holder */
+.editor-holder {
+  min-height: 220px;
+  border-radius: 0.5rem;
+  border: 1px dashed rgba(255, 255, 255, 0.03);
+  padding: 0.6rem;
+}
+
+/* excerpt truncation */
+.excerpt {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  line-clamp: 3; /* standard property for compatibility */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* author avatar */
+.author-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 9999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #0ea5e9, #2563eb);
+  color: white;
+  font-weight: 600;
+}
+/* slightly larger variant for post page */
+.author-avatar-lg {
+  width: 56px;
+  height: 56px;
+}
+
+/* subtle ring around avatars */
+.avatar-ring {
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 4px 16px rgba(2, 6, 23, 0.35);
+}
+
+/* image inside avatar circle */
+.avatar-img {
+  width: 100%;
+  height: 100%;
+  border-radius: 9999px;
+  object-fit: cover;
+  display: block;
+}
+
+/* card inner typography */
+.card .title {
+  font-size: 1.375rem;
+  font-weight: 700;
+  line-height: 1.3;
+}
+@media (min-width: 768px) {
+  .card .title {
+    font-size: 1.5rem;
+  }
+}
+.card .author-muted {
+  color: #9aa7b8;
+  font-weight: 400;
+  font-size: 0.875rem;
+}
+.card .excerpt {
+  margin-top: 0.75rem;
+  line-height: 1.7;
+  color: #cbd5e1;
+}
+
+/* nav link underline animation */
+.nav-link {
+  position: relative;
+  color: #cfe8ff;
+  transition: color 160ms ease;
+}
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  height: 2px;
+  width: 0;
+  background: linear-gradient(90deg, #0ea5e9, #2563eb);
+  transition: width 220ms ease;
+}
+.nav-link:hover {
+  color: #fff;
+}
+.nav-link:hover::after {
+  width: 100%;
+}
+
+/* Elevated variants for navbar buttons */
+.nav-pill {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.55rem 0.95rem;
+  font-size: 0.82rem;
+  font-weight: 500;
+  letter-spacing: 0.25px;
+  border-radius: 0.7rem;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(6px);
+  color: #cfe8ff;
+  transition: background 180ms ease, border-color 180ms ease, color 160ms ease,
+    box-shadow 180ms ease, transform 140ms ease;
+}
+.nav-pill:hover {
+  background: rgba(14, 165, 233, 0.12);
+  border-color: rgba(14, 165, 233, 0.4);
+  color: #ffffff;
+  box-shadow: 0 4px 18px rgba(14, 165, 233, 0.25);
+  transform: translateY(-2px);
+}
+.nav-pill:active {
+  transform: translateY(0);
+}
+/* .nav-pill:focus {
+  outline: 2px solid rgba(14, 165, 233, 0.5);
+  outline-offset: 2px;
+} */
+
+/* Primary CTA style for logout (or Add) */
+.nav-cta {
+  background: linear-gradient(90deg, #0ea5e9, #2563eb);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 6px 20px rgba(14, 165, 233, 0.35);
+}
+.nav-cta:hover {
+  background: linear-gradient(90deg, #38bdf8, #1d4ed8);
+  box-shadow: 0 10px 26px rgba(14, 165, 233, 0.45);
+}
+.nav-cta:active {
+  transform: translateY(0);
+}
+
+/* search input with icon */
+.search-wrapper {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+.search-icon {
+  position: absolute;
+  left: 10px;
+  color: rgba(255, 255, 255, 0.6);
+}
+.search-input {
+  padding-left: 36px;
+  padding-right: 10px;
+  height: 36px;
+  border-radius: 9999px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  background: rgba(255, 255, 255, 0.02);
+  color: #e6f3ff;
+  outline: none;
+  transition: box-shadow 140ms ease, transform 120ms ease;
+}
+.search-input::placeholder {
+  color: rgba(255, 255, 255, 0.45);
+}
+.search-input:focus {
+  box-shadow: 0 8px 26px rgba(14, 165, 233, 0.08);
+  transform: translateY(-1px);
+}
+
+/* utility for subtle muted text */
+.muted {
+  color: #94a3b8;
+}
+
+/* Legacy read-more-btn styles removed; .btn-brand is used for Read buttons */
