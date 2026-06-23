@@ -34,7 +34,7 @@ CLIENT_ORIGIN=http://localhost:5173
 For the frontend (`client/`), optional:
 
 ```env
-VITE_API_BASE=
+VITE_API_BASE= # keep empty to use Vite proxy in local development
 ```
 
 - Leave `VITE_API_BASE` empty for local development with Vite proxy.
@@ -86,4 +86,3 @@ The client runs on `http://localhost:5173` and proxies `/api` requests to `http:
 - Auth: `/api/v1/auth`
 - Posts: `/api/v1/posts`
 - Health check: `/health`
-
